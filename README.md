@@ -13,51 +13,52 @@ Clone source code recursively.
 
     $ git clone --recursive https://github.com/openql-org/riscv-k-refs.git -b develop-openql
 
-    NOTE: Need to specify the branch name as a parameter.
+NOTE: Need to specify the branch name as a parameter.
 
 
 ## Build riscv-gnu-toolchain
 
-   $ pushd riscv-gnu-toolchain
-   $ mkdir build
-   $ cd build
-   $ ../configure --prefix=${RISCV} --enable-multilib
-
-   # For Newlib 
-   $ make -j`nproc`
-
-   # For Linux 
-   $ make -j`nproc` linux
-
-   $ sudo make install
-   $ popd
+    $ pushd riscv-gnu-toolchain
+    $ mkdir build
+    $ cd build
+    $ ../configure --prefix=${RISCV} --enable-multilib
+    
+    # For Newlib 
+    $ make -j`nproc`
+    
+    # For Linux 
+    $ make -j`nproc` linux
+    
+    $ sudo make install
+    $ popd
 
 
 ## Build riscv-tools
 
 ### Build QuEST library
 
-   $ pushd riscv-tools/riscv-isa-sim/QuEST
-   $ mkdir build
-   $ cd build
-   $ cmake ..
-   $ make
-
-   $ popd
+    $ pushd riscv-tools/riscv-isa-sim/QuEST
+    $ mkdir build
+    $ cd build
+    $ cmake ..
+    $ make
+    
+    $ popd
 
 ### Make opcode
 
-   $ pushd riscv-tools/riscv-opcode
-   $ pip install future
-   $ make
-   $ popd
+    $ pushd riscv-tools/riscv-opcode
+    $ pip install future
+    $ make
+    $ popd
 
 ### Build riscv-pk and install
 
-   $ pushd riscv-tools/riscv-pk
-   $ mkdir build
-   $ cd build
-   $ ../configure  --prefix=$HOME/work/riscv/ --host=riscv64-unknown-elf
-   $ make
-   $ sudo make install
-   $ popd
+    $ pushd riscv-tools/riscv-pk
+    $ mkdir build
+    $ cd build
+    $ ../configure  --prefix=$HOME/work/riscv/ --host=riscv64-unknown-elf
+    $ make
+    $ sudo make install
+    $ popd
+
