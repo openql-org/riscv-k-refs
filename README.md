@@ -15,6 +15,11 @@ Clone source code recursively.
 
 NOTE: Need to specify the branch name as a parameter.
 
+Set the toolchain install directory to RISCV environment parameter.
+
+   $ export RISCV=/path/to/install/riscv/toolchain
+
+
 
 ## Build riscv-gnu-toolchain
 
@@ -37,7 +42,7 @@ NOTE: Need to specify the branch name as a parameter.
 
 ### Build QuEST library
 
-    $ pushd riscv-tools/riscv-isa-sim/QuEST
+    $ pushd riscv-tools/QuEST
     $ mkdir build
     $ cd build
     $ cmake ..
@@ -57,8 +62,19 @@ NOTE: Need to specify the branch name as a parameter.
     $ pushd riscv-tools/riscv-pk
     $ mkdir build
     $ cd build
-    $ ../configure  --prefix=$HOME/work/riscv/ --host=riscv64-unknown-elf
+    $ ../configure  --prefix=${RISCV} --host=riscv64-unknown-elf
     $ make
+    $ sudo make install
+    $ popd
+
+### Build Spike riscv simulator and install
+
+    $ pushd riscv-tools/riscv-isa-sim
+    $ autoconf
+    $ mkdir build
+    $ cd build
+    $ ../configure  --prefix=${RISCV}
+    $ make CFLAGS=-DQUEST CPPFLAGS=-DQUEST -j`nproc`
     $ sudo make install
     $ popd
 
