@@ -20,13 +20,12 @@ Set the toolchain install directory to RISCV environment parameter.
    $ export RISCV=/path/to/install/riscv/toolchain
 
 
-
 ## Build riscv-gnu-toolchain
 
     $ pushd riscv-gnu-toolchain
     $ mkdir build
     $ cd build
-    $ ../configure --prefix=${RISCV} --enable-multilib
+    $ CC= CXX= ../configure --prefix=${RISCV} --enable-multilib
     
     # For Newlib 
     $ make -j`nproc`
@@ -39,6 +38,10 @@ Set the toolchain install directory to RISCV environment parameter.
 
 
 ## Build riscv-tools
+
+Set the toolchain installed directory to PATH environment parameter.
+
+   $ export PATH=${RISCV}/bin:${PATH}
 
 ### Build QuEST library
 
@@ -53,16 +56,16 @@ Set the toolchain install directory to RISCV environment parameter.
 ### Make opcode
 
     $ pushd riscv-tools/riscv-opcode
-    $ pip install future
     $ make
     $ popd
 
 ### Build riscv-pk and install
 
     $ pushd riscv-tools/riscv-pk
+    $ autoconf
     $ mkdir build
     $ cd build
-    $ ../configure  --prefix=${RISCV} --host=riscv64-unknown-elf
+    $ ../configure  --prefix=${RISCV} --host=riscv64-unknown-linux-gnu
     $ make
     $ sudo make install
     $ popd
