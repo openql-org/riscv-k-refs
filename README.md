@@ -6,7 +6,7 @@ Reference implementation for the proposed RISC-V K quantum extension
 Several standard packages are needed to build the toolchain.  On Ubuntu,
 executing the following command should suffice:
 
-    $ sudo apt install autoconf automake autotools-dev curl python3 libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev
+    $ sudo apt install autoconf automake autotools-dev curl python3 libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev liboscpack-dev
 
 
 Clone source code recursively. 
@@ -77,7 +77,7 @@ Set the toolchain installed directory to PATH environment parameter.
     $ mkdir build
     $ cd build
     $ ../configure  --prefix=${RISCV}
-    $ make CFLAGS=-DQUEST CPPFLAGS=-DQUEST -j`nproc`
+    $ make CPPFLAGS=-DQUEST -j`nproc`
     $ sudo make install
     $ popd
 
