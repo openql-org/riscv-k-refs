@@ -1,8 +1,8 @@
 [submodule "riscv-tools"]
 	path = riscv-tools
 	url = ../riscv-tools.git
-	branch = develop-openql
+	branch = develop-openql-wip
 [submodule "riscv-gnu-toolchain"]
 	path = riscv-gnu-toolchain
 	url = ../riscv-gnu-toolchain.git
-	branch = develop-openql
+	branch = develop-openql-wip
